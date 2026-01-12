@@ -1,0 +1,47 @@
+<!-- @import /home/lab/workspace/.claude/CLAUDE.md -->
+
+# Project-Specific Configuration
+
+This file imports workspace-level configuration from `/home/lab/workspace/.claude/CLAUDE.md`.
+All workspace rules apply. Project-specific rules below strengthen or extend them.
+
+## Mandatory Bans (Reinforced)
+
+The following workspace rules are STRICTLY ENFORCED for this project:
+
+- **No automatic git tags** - only create tags when user explicitly requests
+- **No automatic version changes** - only modify version when user explicitly requests
+- **No automatic publishing** - never publish without explicit user request
+- **No automatic git commits or pushes** - only when user explicitly requests
+
+## Project Context
+
+**Project**: {{ project_name }}
+**Purpose**: {{ project_description }}
+**Input**: {{ input_type }}
+**Output**: {{ output_type }}
+**Audience**: {{ target_audience }}
+
+## Agentic Workflow Rules
+
+**Source fidelity**: All generated content must trace exclusively to source materials in `/1-input/` - no external information permitted without explicit user approval
+
+**Parallel processing**: Maximum {{ max_parallel_agents }} agents running simultaneously to prevent API overload
+
+**Transparency**: All transformation decisions must be documented with reasoning trails
+
+**User approval**: Processing plans must be presented to user for approval before content generation begins
+
+## Directory Conventions
+
+- **1-input/**: Read-only during processing. All source materials here
+- **2-work-in-progress/**: Active workspace for intermediate artifacts
+- **3-output/**: Verified final deliverables only
+- **4-references/**: Templates and quality standards
+
+## Agent Interaction
+
+Agents coordinate through:
+- Shared summaries in `/2-work-in-progress/`
+- CHECKLIST.md for status tracking
+- Consistent terminology defined in processing plan

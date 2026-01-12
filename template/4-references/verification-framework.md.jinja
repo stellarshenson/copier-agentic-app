@@ -1,0 +1,190 @@
+# Verification Framework
+
+## Purpose
+
+This document defines the verification framework to ensure all output documents are based **exclusively** on the source materials in `/1-input/` and maintain quality standards appropriate for {{ target_audience }}.
+
+## Source Materials Profile
+
+### Materials Location
+- **Source Directory**: `/1-input/`
+- **Type**: {{ input_type }}
+- **Note**: Specific material metadata will be documented after initial review
+
+### Key Content Areas
+Content areas will be identified and documented after initial source review. Document the main themes, topics, and data categories found in source materials.
+
+## Verification Criteria
+
+### 1. Content Fidelity Checks
+
+#### 1.1 Direct Source Traceability
+**Requirement**: Every factual claim, statistic, or concept must be traceable to source materials.
+
+**Verification Steps**:
+- [ ] For each section in outputs, identify corresponding source material
+- [ ] Verify all data points match source exactly
+- [ ] Confirm terminology aligns with source usage
+- [ ] Validate all references are accurate
+
+**Red Flags**:
+- Data points not present in source materials
+- Terms or concepts not mentioned in sources
+- Information beyond what sources provide
+
+#### 1.2 No External Information
+**Requirement**: Content must not include information from outside source materials.
+
+**Verification Steps**:
+- [ ] Check for content not in sources
+- [ ] Verify no references to external events or data
+- [ ] Ensure no data from other sources
+- [ ] Confirm no introduction of external frameworks
+
+**Red Flags**:
+- References to materials not in `/1-input/`
+- Data or projections beyond source content
+- Details not discussed in source materials
+
+#### 1.3 Inference Boundaries
+**Requirement**: Reasonable inferences are acceptable but must be clearly distinguished from source facts.
+
+**Acceptable Inferences**:
+- Applying general findings to specific context
+- Extrapolating implications for target audience
+- Connecting source concepts to practical considerations
+
+**Unacceptable Inferences**:
+- Specific recommendations not supported by source
+- Projections beyond source data
+- Requirements not mentioned in source
+- Timelines not based on source evidence
+
+### 2. Audience Appropriateness
+
+#### 2.1 Language and Terminology
+**Requirement**: Content must be appropriate for {{ target_audience }}.
+
+**Verification Steps**:
+- [ ] Technical terms are explained or contextualized
+- [ ] Language appropriate for audience level
+- [ ] Focus on actionable insights
+- [ ] Balance between technical and practical perspectives
+
+#### 2.2 Relevance Filter
+**Requirement**: Emphasize content most relevant to target audience needs.
+
+**Verification Steps**:
+- [ ] Content prioritized by relevance
+- [ ] Key concerns addressed
+- [ ] Practical considerations highlighted
+- [ ] Audience context maintained
+
+### 3. Structural Integrity
+
+#### 3.1 Internal Consistency
+**Requirement**: All outputs must be consistent with each other and with sources.
+
+**Verification Steps**:
+- [ ] Data cited consistently across all outputs
+- [ ] Terminology used uniformly
+- [ ] No contradictions between sections
+- [ ] Summaries accurately reflect detailed content
+
+#### 3.2 Completeness
+**Requirement**: All required elements present and properly developed.
+
+**Verification Steps**:
+- [ ] All planned outputs completed
+- [ ] Each output has reasoning documentation
+- [ ] All reasoning documents explain source mapping
+- [ ] Any assumptions clearly documented
+
+### 4. Forbidden Content
+
+The following content types are **prohibited** as they cannot be verified against source:
+
+- [ ] Information from materials not in `/1-input/`
+- [ ] External data sources or references
+- [ ] Content beyond source scope
+- [ ] Projections not based on source data
+- [ ] Details not present in source materials
+
+### 5. Verification Execution Process
+
+#### Phase 1: Initial Content Review (Per Output)
+1. Read output completely
+2. Create source-mapping document linking each section to source materials
+3. Flag any content that cannot be directly sourced
+4. Review reasoning document for alignment
+
+#### Phase 2: Data Verification
+1. Extract all data points from outputs
+2. Verify each against source materials
+3. Ensure accuracy of any transformations
+4. Check for computational errors
+
+#### Phase 3: Cross-Output Consistency
+1. Create terminology index across all outputs
+2. Verify consistent use of terms and concepts
+3. Check for contradictions or inconsistencies
+4. Validate summaries against detailed content
+
+#### Phase 4: Audience Appropriateness Review
+1. Review for appropriate language
+2. Verify relevance to audience
+3. Check for actionable insights
+4. Ensure context maintained
+
+#### Phase 5: Prohibited Content Scan
+1. Search for external references
+2. Check for outside data sources
+3. Verify no external information
+4. Confirm compliance with constraints
+
+### 6. Verification Reporting
+
+For each output, create verification report containing:
+
+**Section 1: Source Mapping**
+- Table linking each output section to source materials
+
+**Section 2: Data Verification**
+- List of all data points with source references
+- Confirmation of accuracy
+
+**Section 3: Inference Log**
+- List of all inferences made
+- Justification for each inference
+- Confirmation that inference boundaries not exceeded
+
+**Section 4: Issues Found**
+- Any content that could not be verified
+- Inconsistencies discovered
+- Recommendations for revision
+
+**Section 5: Compliance Certification**
+- [ ] Content fidelity: PASS/FAIL
+- [ ] No external information: PASS/FAIL
+- [ ] Audience appropriateness: PASS/FAIL
+- [ ] Internal consistency: PASS/FAIL
+- [ ] No prohibited content: PASS/FAIL
+
+## Verification Success Criteria
+
+All outputs pass verification if:
+
+1. 100% of factual claims traceable to source
+2. 100% of data points match source exactly
+3. Zero instances of prohibited content
+4. All inferences clearly justified and bounded
+5. Complete source mapping documentation exists
+6. Cross-output consistency verified
+7. Audience appropriateness confirmed
+8. All reasoning documents explain source usage
+
+## Final Verification Statement
+
+Upon successful verification, include this statement in VERIFICATION-RESULTS.md:
+
+> "All output documents have been verified against source materials in `/1-input/`. All factual claims, data points, and concepts are traceable to source. No external information has been introduced. Inferences made for {{ target_audience }} context are clearly bounded and justified. The content is appropriate for the target audience."

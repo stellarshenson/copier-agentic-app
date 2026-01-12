@@ -1,0 +1,61 @@
+# Execution Instructions
+
+Entry point for executing the {{ project_name }} project. Consult `GOAL.md` for project objectives and deliverables.
+
+## Prerequisites
+
+Phase 0 must be completed before execution:
+- Source materials prepared in `/1-input/`
+- Input validated and organized
+- Prerequisites verified
+
+## Workflow Overview
+
+The workflow defined in `/workflow/workflow.md`:
+
+**Step 1: Source Understanding**
+Read all source materials and create summaries capturing key themes and relevant content. These summaries provide context for all subsequent processing.
+
+**Step 2: Contextual Awareness**
+When processing any section, review all other summaries to maintain awareness of entire context. Ensures coherent cross-references and consistent terminology across outputs.
+
+**Step 3: Structure Analysis**
+Review source organization to understand hierarchical structure and relationships. Use as guide for content organization and mapping.
+
+**Step 4: Output Structure Design**
+Design target structure mapping source materials to output deliverables. Define specific content elements ensuring logical flow and comprehensive coverage.
+
+**Step 5: Processing Plan and Approval**
+Create detailed execution plan specifying which sources contribute to each output. Present plan to user for approval before content generation begins.
+
+**Step 6: Parallel Agent Processing**
+Generate outputs using separate agents with maximum {{ max_parallel_agents }} running concurrently. Each agent maintains contextual awareness through summaries while processing independently.
+
+**Step 7: Checklist Management**
+Create and maintain CHECKLIST.md tracking all items to be processed, current status (pending/in-progress/completed), and processing statistics.
+
+**Step 8: Status Updates**
+Agents update status in real-time as work begins and completes, providing visibility into processing progress throughout execution.
+
+Consult `/workflow/workflow.md` for complete workflow definition and `/workflow/README.md` for execution approach.
+
+## Execution Resources
+
+- **Workflow definition**: `/workflow/workflow.md`
+- **Phase details**: `/workflow/phase-*.md`
+- **Agent definitions**: `/agents/`
+- **Reference standards**: `/4-references/`
+
+## Invoking Execution
+
+To execute a specific phase:
+```
+Execute Phase [N]: [Phase Name]
+```
+
+Example:
+```
+Execute Phase 1: Preparation and Source Analysis
+```
+
+For complete workflow, consult `/workflow/README.md` for execution approach (sequential vs parallel).

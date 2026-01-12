@@ -1,0 +1,53 @@
+# Copier configuration for Agentic App Template
+_subdirectory: template
+
+project_name:
+  type: str
+  help: Project name (used in documentation and folder names)
+  default: my-agentic-project
+
+project_slug:
+  type: str
+  help: Project slug (lowercase, hyphens, used for directory names)
+  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
+
+project_description:
+  type: str
+  help: Short project description
+  default: An agentic workflow project
+
+goal_summary:
+  type: str
+  help: What is the main goal of this project?
+  default: Transform input documents into structured output using agent-based workflows
+
+input_type:
+  type: str
+  help: What type of input will be processed?
+  default: documents
+
+output_type:
+  type: str
+  help: What type of output will be generated?
+  default: structured reports
+
+target_audience:
+  type: str
+  help: Who is the target audience for the output?
+  default: stakeholders
+
+max_parallel_agents:
+  type: int
+  help: Maximum number of agents running in parallel
+  default: 3
+
+author_name:
+  type: str
+  help: Author name for documentation
+  default: ""
+
+_skip_if_exists:
+  - ".claude/JOURNAL.md"
+  - "1-input/**/*"
+  - "2-work-in-progress/**/*"
+  - "3-output/**/*"

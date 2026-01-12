@@ -1,0 +1,114 @@
+# Processing Workflow
+
+Core workflow ensuring contextual awareness, parallel processing, and real-time status tracking.
+
+## Overview
+
+This workflow coordinates agent activities across all phases, emphasizing context sharing, controlled parallelism, and transparent progress tracking. The workflow integrates with phase execution to maintain quality and traceability.
+
+## Step 1: Source Understanding
+
+Read and understand all source materials to build comprehensive context.
+
+- Read all source materials in `/1-input/`
+- Create working directories in `/2-work-in-progress/`
+- Create summary for each source capturing key themes and data points
+- Identify content relevant to {{ target_audience }}
+- Output: Summaries provide overview context for all subsequent processing
+
+**Phase Reference**: See `phase-1-analysis.md` for detailed execution guidance
+
+## Step 2: Contextual Awareness
+
+Maintain awareness of entire context throughout processing.
+
+- When processing any single section, review summaries of all other sections
+- Understand connections and relationships between sources
+- Ensures coherent cross-references and consistent terminology across outputs
+
+**Phase Reference**: See `phase-1-analysis.md` for detailed execution guidance
+
+## Step 3: Structure Analysis
+
+Understand source organization and content structure.
+
+- Review source organization and structure
+- Understand hierarchical relationships
+- Use as guide for content organization and mapping
+
+**Phase Reference**: See `phase-1-analysis.md` for detailed execution guidance
+
+## Step 4: Output Structure Design
+
+Design target structure with source mapping.
+
+- Create prototype structure for outputs
+- Map sources to target deliverables
+- Define specific content elements from each source
+- Ensure logical flow and comprehensive coverage
+
+**Phase Reference**: See `phase-1-analysis.md` for detailed execution guidance
+
+## Step 5: Processing Plan and Approval
+
+Prepare execution plan and obtain user approval.
+
+- Create detailed plan specifying which sources contribute to each output
+- Define specific content elements to extract
+- Specify order of processing and resource allocation
+- **Present plan to user for approval before content generation**
+- Do not proceed without explicit approval
+
+**Phase Reference**: See `phase-1-analysis.md` for detailed execution guidance
+
+## Step 6: Parallel Agent Processing
+
+Process outputs using controlled parallelism.
+
+- **Maximum {{ max_parallel_agents }} agents running simultaneously** (to avoid API overload)
+- Each output processed independently by separate agents
+- When agent completes, it picks up next pending task
+- Update CHECKLIST.md status as agents start/complete work
+- Agents maintain contextual awareness through summaries (Step 2)
+
+**Phase References**: See phase files for output-specific execution guidance
+
+## Step 7: Checklist Management
+
+Track processing status in real-time.
+
+- Create `CHECKLIST.md` file with processing status tracking
+- Include list of all items to be processed
+- Track current status of each item (pending/in-progress/completed)
+- Record processing statistics
+- Update throughout processing for visibility into progress
+
+## Step 8: Status Updates
+
+Maintain real-time status information.
+
+- Agent changes status to "in progress" when starting work
+- Agent marks item as "completed" when finished
+- Update CHECKLIST.md immediately upon status changes
+- Provides real-time visibility into processing progress
+
+## Workflow Integration with Phases
+
+This workflow integrates with detailed phase execution documents. Consult individual phase files for complete task lists, outputs, and completion criteria.
+
+- **Phase 0**: Preprocessing and preparation
+- **Phase 1**: Analysis (Steps 1-5)
+- **Phase 2**: Framework setup before content generation
+- **Phases 3+**: Content generation (Step 6 with Steps 7-8 for tracking)
+- **Verification Phase**: Quality verification
+- **Final Phase**: Finalization and delivery
+
+## Key Principles
+
+**Contextual awareness**: Step 2 ensures agents understand full context when processing any section
+
+**Controlled parallelism**: Step 6 limits concurrent agents to prevent API overload while maximizing throughput
+
+**Transparency**: Steps 7-8 provide real-time visibility into processing state
+
+**User approval**: Step 5 ensures alignment before significant processing begins
