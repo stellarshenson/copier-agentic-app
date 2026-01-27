@@ -1,0 +1,88 @@
+# Source Directory
+
+Python implementations and utilities for {{ project_name }}.
+
+## Module Index
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `utils.py` | Shared utility functions | planned |
+| _add modules as created_ | - | - |
+
+## Module Details
+
+### utils.py (planned)
+
+Shared utilities for all scripts:
+- Common data transformations
+- Validation functions
+- Logging helpers
+
+## Script Requirements
+
+All scripts must implement:
+
+**Command-line interface**:
+- Use argparse for argument handling
+- Provide `--help` documentation
+- Support `--verbose` for detailed output
+
+**Logging**:
+- Log to `logs/` directory with descriptive filenames
+- Use `| tee logs/script-name.log` pattern for background execution
+- Include timestamps in log output
+
+**Error handling**:
+- Validate inputs before processing
+- Log errors with context
+- Return non-zero exit codes on failure
+- Provide actionable error messages
+
+**Progress reporting**:
+- Report progress for long operations
+- Use rich.progress or tqdm for visual feedback
+
+## Usage Patterns
+
+**Standard execution with logging**:
+```bash
+python src/script.py --input 1-input/data.xlsx --output 2-work-in-progress/ 2>&1 | tee logs/processing.log
+```
+
+**Batch processing**:
+```bash
+python src/process_batch.py --input 1-input/ --output 2-work-in-progress/
+```
+
+**Validation**:
+```bash
+python src/validate_data.py --data 2-work-in-progress/extracted-data.json
+```
+
+## Development Guidelines
+
+**Code organization**:
+- One script per major operation
+- Shared utilities in `utils.py`
+- Configuration via command-line arguments
+- No hardcoded paths - use relative paths from project root
+
+**Dependencies**:
+- Document in script docstring or separate requirements.txt
+- Prefer standard library where possible
+- Pin versions for reproducibility
+
+**Testing**:
+- Include example invocations in docstrings
+- Test with sample data from `1-input/`
+
+## Maintenance
+
+- Remove unused scripts and update this index
+- Design scripts for reuse across similar projects
+- Update README when scripts added or modified
+- Document breaking changes
+
+---
+
+_Last reviewed: [date]_

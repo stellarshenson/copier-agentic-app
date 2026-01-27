@@ -1,0 +1,95 @@
+# 4-references
+
+Primary source of examples, rules, and knowledge articles for {{ project_name }}.
+
+This directory defines quality standards, methodologies, and constraints that govern all processing. Agents consult these materials during planning, generation, and verification phases.
+
+## Contents Index
+
+| File | Purpose | Consulted By |
+|------|---------|--------------|
+| `verification-framework.md` | Verification criteria and protocols | Verification Agent |
+| `examples/` | Sample outputs demonstrating quality standards | All agents |
+| `rules/` | Processing rules and constraints | All agents |
+| `knowledge/` | Methodology articles and domain knowledge | All agents |
+
+## Directory Structure
+
+```
+4-references/
+├── verification-framework.md    # Source fidelity and quality checks
+├── examples/                    # Reference outputs
+│   └── example-output.md        # Annotated example showing expected format
+├── rules/                       # Processing constraints
+│   └── processing-rules.md      # Domain-specific rules
+└── knowledge/                   # Methodology articles
+    └── methodology.md           # Approach documentation
+```
+
+## Usage by Phase
+
+**Phase 1 - Analysis**:
+- Review rules to understand processing constraints
+- Consult examples for output format expectations
+- Reference knowledge articles for methodology guidance
+
+**Phase 2 - Framework**:
+- Align terminology with rules definitions
+- Validate output structure against examples
+
+**Phase 3 - Content Generation**:
+- Follow rules during content creation
+- Match quality standards from examples
+- Apply methodologies from knowledge articles
+
+**Phase 4 - Verification**:
+- Execute verification-framework.md protocols
+- Compare outputs against examples
+- Validate rule compliance
+
+## Content Categories
+
+### Verification Framework
+Defines source fidelity requirements, data verification protocols, and compliance criteria. The verification agent executes these protocols before final delivery.
+
+### Examples
+Annotated sample outputs demonstrating:
+- Expected format and structure
+- Quality standards for content
+- Appropriate level of detail
+- Correct terminology usage
+
+Add examples by creating files in `examples/` subdirectory with annotations explaining what makes each example correct.
+
+### Rules
+Processing constraints including:
+- Domain-specific requirements
+- Prohibited content definitions
+- Inference boundaries
+- Formatting standards
+
+### Knowledge Articles
+Methodology documentation explaining:
+- Analytical approaches used in the project
+- Theoretical foundations for methods
+- Best practices and rationale
+
+## Adding Reference Materials
+
+When adding new reference materials:
+
+1. **Choose correct category**: examples/ for samples, rules/ for constraints, knowledge/ for methodology
+2. **Document clearly**: Include purpose, when to consult, and how to apply
+3. **Update this index**: Add entry to Contents Index table
+4. **Cross-reference**: Link from relevant workflow phases and agent definitions
+
+## Maintenance
+
+- Review for accuracy when project requirements change
+- Remove obsolete materials
+- Keep examples current with actual output standards
+- Update knowledge articles as methodology evolves
+
+---
+
+_Last reviewed: [date]_

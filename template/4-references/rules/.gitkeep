@@ -1,0 +1,9 @@
+# Rules Directory
+
+Add processing rules and constraints here.
+
+Rule files should include:
+- Clear statement of the rule
+- Rationale explaining why the rule exists
+- Examples of correct and incorrect application
+- Consequences of violation
