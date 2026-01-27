@@ -1,10 +1,75 @@
 # workflow
 
-Processing instructions and execution procedures for {{ project_name }}. This directory contains the core workflow and detailed phase execution files that coordinate all processing activities.
+Processing instructions and execution procedures for {{ project_name }}.
 
-**Contents**:
-- `workflow.md` - Main workflow coordinating contextual awareness and parallel processing
-- `phase-0-preprocessing.md` through `phase-N-finalization.md` - Detailed execution guidance for each phase
-- Phase files define objectives, tasks, outputs, and completion criteria for each stage
+## Execution Model
 
-The workflow integrates with agent definitions (`/agents/`) and quality standards (`/4-references/`) to ensure systematic processing with comprehensive verification. Processing phases can execute in parallel using up to {{ max_parallel_agents }} concurrent agents while maintaining quality control.
+**Agent-driven execution**: All workflow actions are executed through defined agents. No direct execution without agent assignment.
+
+**Preflight required**: Before starting any workflow phase, execute preflight check (`preflight.md`) to validate project configuration.
+
+## Contents
+
+| File | Purpose |
+|------|---------|
+| `preflight.md` | Pre-execution validation - run before workflow |
+| `workflow.md` | Main workflow coordinating all phases |
+| `phase-0-preprocessing.md` | Source preparation |
+| `phase-1-analysis.md` | Source analysis and planning |
+| `phase-2-framework.md` | Framework setup |
+| `phase-3-content-generation.md` | Parallel content generation |
+| `phase-4-verification.md` | Quality verification |
+| `phase-5-finalization.md` | Final delivery |
+
+## Phase-Agent Mapping
+
+Every phase must declare its executing agent:
+
+| Phase | Agent | Status |
+|-------|-------|--------|
+| Phase 0 | _TBD_ | Define agent |
+| Phase 1 | _TBD_ | Define agent |
+| Phase 2 | _TBD_ | Define agent |
+| Phase 3 | _TBD_ | Define agent |
+| Phase 4 | `verification-agent` | Defined |
+| Phase 5 | _TBD_ | Define agent |
+
+**Requirement**: Update this mapping after defining agents for each phase.
+
+## Execution Sequence
+
+1. **Preflight**: Run `preflight.md` checks - abort if any fail
+2. **Phase 0**: Preprocessing (prepare sources)
+3. **Phase 1**: Analysis (understand sources, design outputs)
+4. **Phase 2**: Framework (establish processing standards)
+5. **Phase 3**: Content Generation (parallel agent processing, max {{ max_parallel_agents }} concurrent)
+6. **Phase 4**: Verification (quality and source fidelity checks)
+7. **Phase 5**: Finalization (deliver verified outputs)
+
+## Invoking Execution
+
+```
+Execute Preflight Check
+```
+
+Then, for each phase:
+```
+Execute Phase [N]: [Phase Name]
+```
+
+Example:
+```
+Execute Phase 1: Analysis
+```
+
+## Integration Points
+
+- **Agents**: `/agents/` - Consult agent definitions for execution details
+- **References**: `/4-references/` - Quality standards and verification framework
+- **Scripts**: `/src/` - Supporting automation tools
+
+## Quality Control
+
+- Agents update `CHECKLIST.md` as work progresses
+- Verification agent validates all outputs before finalization
+- Processing plan requires user approval (Phase 1, Step 5)

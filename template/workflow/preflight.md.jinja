@@ -1,0 +1,215 @@
+# Preflight Check
+
+Validation procedures executed before workflow begins. Preflight ensures all prerequisites are met and project configuration is consistent.
+
+## Execution
+
+Run preflight check before starting any workflow phase:
+
+```
+Execute Preflight Check
+```
+
+**Abort Condition**: If any preflight check fails, workflow execution must stop. Do not proceed until all issues are resolved.
+
+## Preflight Checklist
+
+### 1. Input Validation
+
+- [ ] `/1-input/` directory exists and contains source materials
+- [ ] Source materials are readable (not corrupted, correct format)
+- [ ] Source count matches expected (document in GOAL.md)
+
+**Abort if**: No source materials found or sources unreadable.
+
+### 2. Directory Structure
+
+- [ ] `/2-work-in-progress/` directory exists
+- [ ] `/3-output/` directory exists
+- [ ] `/4-references/` directory exists with verification framework
+- [ ] `/agents/` directory exists with agent definitions
+- [ ] `/workflow/` directory exists with phase definitions
+- [ ] `/src/` directory exists
+
+**Abort if**: Required directories missing.
+
+### 3. Agent Definitions
+
+- [ ] All agents listed in `/agents/README.md` have definition files
+- [ ] Each agent definition includes required sections:
+  - [ ] PERSONA
+  - [ ] CONTEXT
+  - [ ] STAKES
+  - [ ] TOOLS
+  - [ ] METHODOLOGY
+  - [ ] CONSTRAINTS
+  - [ ] SUCCESS CRITERIA
+  - [ ] INTERACTION
+- [ ] TOOLS section defines available tools and Python scripts
+- [ ] INTERACTION section declares workflow mapping
+
+**Abort if**: Agent definitions incomplete or missing required sections.
+
+### 4. Workflow-Agent Consistency
+
+- [ ] Every workflow phase has an assigned agent
+- [ ] Every assigned agent exists in `/agents/`
+- [ ] No orphan agents (defined but never referenced in workflow)
+- [ ] Agent capabilities match phase requirements
+
+**Cross-Reference Check**:
+
+| Phase | Required Agent | Agent Exists | Capabilities Match |
+|-------|----------------|--------------|-------------------|
+| Phase 0 | _agent-name_ | [ ] | [ ] |
+| Phase 1 | _agent-name_ | [ ] | [ ] |
+| Phase 2 | _agent-name_ | [ ] | [ ] |
+| Phase 3 | _agent-name_ | [ ] | [ ] |
+| Phase 4 | verification-agent | [x] | [x] |
+| Phase 5 | _agent-name_ | [ ] | [ ] |
+
+**Abort if**: Workflow-agent mapping inconsistent.
+
+### 5. Reference Materials
+
+- [ ] `/4-references/verification-framework.md` exists
+- [ ] Verification framework defines success criteria
+- [ ] `/4-references/rules/` contains applicable rules (if any)
+- [ ] `/4-references/examples/` contains reference outputs (if any)
+
+**Abort if**: Verification framework missing.
+
+### 6. Tools and Scripts
+
+- [ ] Required Python scripts exist in `/src/`
+- [ ] Scripts have proper CLI interface (--help works)
+- [ ] Dependencies documented or available
+
+**Abort if**: Required tools missing or non-functional.
+
+### 7. Goal Clarity
+
+- [ ] `/GOAL.md` exists and defines:
+  - [ ] Project objectives
+  - [ ] Expected deliverables
+  - [ ] Target audience
+  - [ ] Success criteria
+- [ ] Goal is achievable with available sources
+
+**Abort if**: Goals undefined or unachievable.
+
+## Preflight Report
+
+Generate preflight report before proceeding:
+
+```markdown
+# Preflight Report - {{ project_name }}
+
+**Date**: [timestamp]
+**Status**: PASS / FAIL
+
+## Summary
+
+- Input validation: PASS / FAIL
+- Directory structure: PASS / FAIL
+- Agent definitions: PASS / FAIL
+- Workflow-agent consistency: PASS / FAIL
+- Reference materials: PASS / FAIL
+- Tools and scripts: PASS / FAIL
+- Goal clarity: PASS / FAIL
+
+## Issues Found
+
+[List any issues that must be resolved]
+
+## Recommendation
+
+[ ] PROCEED with workflow execution
+[ ] ABORT - resolve issues before proceeding
+```
+
+## Resolution Procedures
+
+### Missing Agent Definition
+
+1. Create agent file in `/agents/[name]-agent.md`
+2. Include all required sections
+3. Map to workflow phase
+4. Update `/agents/README.md` registry
+5. Re-run preflight
+
+### Inconsistent Workflow Mapping
+
+1. Review `/workflow/workflow.md` for phase-agent assignments
+2. Ensure each phase declares its executing agent
+3. Verify agent exists and has matching capabilities
+4. Re-run preflight
+
+### Missing Tools
+
+1. Document required tool in agent's TOOLS section
+2. Create script in `/src/` if needed
+3. Test script CLI interface
+4. Re-run preflight
+
+## Automation
+
+For projects requiring automated preflight, create `/src/preflight_check.py`:
+
+```python
+#!/usr/bin/env python3
+"""
+Preflight validation script for {{ project_name }}.
+Validates project structure, agent definitions, and workflow consistency.
+"""
+import argparse
+from pathlib import Path
+import sys
+
+def check_directories(project_root: Path) -> list[str]:
+    """Check required directories exist."""
+    required = ['1-input', '2-work-in-progress', '3-output', '4-references', 'agents', 'workflow', 'src']
+    issues = []
+    for d in required:
+        if not (project_root / d).is_dir():
+            issues.append(f"Missing directory: {d}/")
+    return issues
+
+def check_agents(project_root: Path) -> list[str]:
+    """Check agent definitions are complete."""
+    issues = []
+    agents_dir = project_root / 'agents'
+    required_sections = ['PERSONA', 'CONTEXT', 'STAKES', 'TOOLS', 'METHODOLOGY', 'CONSTRAINTS', 'SUCCESS CRITERIA', 'INTERACTION']
+
+    for agent_file in agents_dir.glob('*-agent.md*'):
+        content = agent_file.read_text()
+        for section in required_sections:
+            if f'## {section}' not in content:
+                issues.append(f"{agent_file.name}: missing ## {section}")
+    return issues
+
+def main():
+    parser = argparse.ArgumentParser(description='Preflight validation')
+    parser.add_argument('--project-root', default='.', help='Project root directory')
+    args = parser.parse_args()
+
+    root = Path(args.project_root)
+    all_issues = []
+
+    all_issues.extend(check_directories(root))
+    all_issues.extend(check_agents(root))
+
+    if all_issues:
+        print("PREFLIGHT FAILED")
+        for issue in all_issues:
+            print(f"  - {issue}")
+        sys.exit(1)
+    else:
+        print("PREFLIGHT PASSED")
+        sys.exit(0)
+
+if __name__ == '__main__':
+    main()
+```
+
+Run with: `python src/preflight_check.py --project-root .`

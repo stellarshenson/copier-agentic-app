@@ -1,0 +1,99 @@
+# Agents
+
+Agent definitions for {{ project_name }}. All workflow actions must be executed through a defined agent.
+
+## Core Principle
+
+**No action without an agent**: Every processing task in the workflow must be explicitly assigned to a defined agent. Agents are the sole executors of work - direct execution without agent assignment is prohibited.
+
+## Agent Registry
+
+| Agent | Workflow Phases | Primary Responsibility |
+|-------|-----------------|------------------------|
+| `reconnaissance-agent` | Pre-workflow | Project scanning and context establishment |
+| `verification-agent` | Phase 4 | Source fidelity and quality verification |
+| _add agents as created_ | - | - |
+
+## Agent Definition Structure
+
+Each agent definition must include:
+
+### Required Sections
+
+| Section | Purpose |
+|---------|---------|
+| **PERSONA** | Character, expertise, and approach |
+| **CONTEXT** | Operating environment, inputs, outputs |
+| **STAKES** | Consequences of success and failure |
+| **METHODOLOGY** | Step-by-step execution approach |
+| **CONSTRAINTS** | Boundaries and limitations |
+| **TOOLS** | Available tools and their usage |
+| **SUCCESS CRITERIA** | Measurable completion requirements |
+| **INTERACTION** | How agent coordinates with others |
+
+### TOOLS Section Format
+
+```markdown
+## TOOLS
+
+| Tool | Purpose | When to Use |
+|------|---------|-------------|
+| `tool-name` | What it does | Conditions for use |
+
+**Tool Usage Guidelines**:
+- Rule 1 for tool usage
+- Rule 2 for tool usage
+```
+
+## Workflow Mapping
+
+Every workflow phase must explicitly declare which agent executes it:
+
+```markdown
+## Execution
+
+**Agent**: `agent-name`
+**Phase Reference**: `workflow/phase-N-name.md`
+```
+
+Workflow phases without agent assignment will fail preflight validation.
+
+## Adding New Agents
+
+1. Create file: `[name]-agent.md` (use `.jinja` if templating needed)
+2. Include all required sections (PERSONA through INTERACTION)
+3. Define TOOLS section with available tools
+4. Update Agent Registry table above
+5. Map agent to workflow phases in `workflow/workflow.md`
+6. Run preflight check to validate consistency
+
+## Preflight Validation
+
+Before workflow execution, preflight check validates:
+- [ ] All workflow phases have assigned agents
+- [ ] All assigned agents have definitions in `/agents/`
+- [ ] Agent definitions include all required sections
+- [ ] TOOLS sections define available capabilities
+- [ ] No orphan agents (defined but not mapped to workflow)
+
+See `workflow/preflight.md` for complete preflight procedures.
+
+## Available Agents
+
+### reconnaissance-agent
+
+Project manager agent that scans and establishes understanding of the project before any processing begins. Inventories sources, reviews goals, checks agent readiness, and produces reconnaissance report.
+
+**Mapped to**: Pre-workflow (before Phase 0)
+**Tools**: Glob, Read, Grep, Bash
+
+### verification-agent
+
+Executes comprehensive verification protocols across all generated outputs. Ensures source fidelity, data accuracy, cross-output consistency, and audience appropriateness before final delivery.
+
+**Mapped to**: Phase 4 (Verification)
+**Tools**: Read, Grep, Glob, Write
+
+---
+
+_Last reviewed: [date]_
