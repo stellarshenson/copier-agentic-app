@@ -22,23 +22,23 @@ Execute Preflight Check
 
 **ABORT if any preflight check fails.** Do not proceed until all issues are resolved.
 
-### Step 2: Reconnaissance
+### Step 2: Project Assessment
 
-After preflight passes, invoke the Reconnaissance Agent to scan and understand the project:
+After preflight passes, invoke the Project Manager Agent to scan and understand the project:
 
 ```
-Invoke Reconnaissance Agent
+Invoke Project Manager Agent
 ```
 
-The reconnaissance agent will:
+The project manager agent will:
 - Scan project structure and key artefacts
 - Review GOAL.md for objectives
 - Inventory source materials in `/1-input/`
 - Review workflow phases and agent mappings
 - Check 4-references for rules and standards
-- Produce RECONNAISSANCE-REPORT.md
+- Produce PROJECT-ASSESSMENT.md
 
-Review reconnaissance report. Note any risks or blockers identified.
+Review project assessment. Note any risks or blockers identified.
 
 ### Step 3: Read Instructions
 
@@ -97,5 +97,5 @@ After verification passes:
 If execution is interrupted:
 1. Read CHECKLIST.md for current status
 2. Run preflight to validate configuration
-3. Run reconnaissance to re-establish context
+3. Run project assessment to re-establish context
 4. Resume from last incomplete phase

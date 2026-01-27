@@ -10,7 +10,7 @@ Agent definitions for {{ project_name }}. All workflow actions must be executed 
 
 | Agent | Workflow Phases | Primary Responsibility |
 |-------|-----------------|------------------------|
-| `reconnaissance-agent` | Pre-workflow | Project scanning and context establishment |
+| `project-manager-agent` | Pre-workflow | Project scanning and context establishment |
 | `verification-agent` | Phase 4 | Source fidelity and quality verification |
 | _add agents as created_ | - | - |
 
@@ -80,11 +80,11 @@ See `workflow/preflight.md` for complete preflight procedures.
 
 ## Available Agents
 
-### reconnaissance-agent
+### project-manager-agent
 
-Project manager agent that scans and establishes understanding of the project before any processing begins. Inventories sources, reviews goals, checks agent readiness, and produces reconnaissance report.
+Project manager agent that scans and establishes understanding of the project before any processing begins. Inventories sources, reviews goals, checks agent readiness, and produces project assessment report.
 
-**Mapped to**: Pre-workflow (before Phase 0)
+**Mapped to**: Pre-workflow (after preflight, before Phase 0)
 **Tools**: Glob, Read, Grep, Bash
 
 ### verification-agent

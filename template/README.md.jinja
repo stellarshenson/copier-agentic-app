@@ -2,6 +2,12 @@
 
 {{ project_description }}
 
+## Quick Start
+
+1. Run `/init-project` to capture goals, context, and workflow configuration
+2. Run `/self-check` to validate project consistency
+3. Run `/process` to execute the workflow
+
 **Project goal**: See `GOAL.md` for objectives and deliverables
 **Execution**: See `INSTRUCTIONS.md` for workflow entry point
 
@@ -25,12 +31,18 @@ This project processes {{ input_type }} and produces {{ output_type }} for {{ ta
 
 Source materials in `1-input/` are analyzed and processed through defined workflow phases. Agents operate in parallel (max {{ max_parallel_agents }} concurrent) to generate output with reasoning documentation. All output undergoes verification before final delivery.
 
+## Commands
+
+- `/init-project` - Capture goals, context, and workflow configuration
+- `/process` - Execute full workflow (preflight -> assessment -> phases)
+- `/self-check` - Validate consistency across goals, workflow, and agents
+
 ## Directories
 
 - **1-input** - Source materials (read-only during processing)
 - **2-work-in-progress** - Active processing workspace
 - **3-output** - Verified final deliverables
-- **4-references** - Reference materials and templates
+- **4-references** - Reference materials, rules, examples, and knowledge articles
 - **agents** - Agent definition files
 - **doc** - Project documentation
 - **src** - Scripts and reusable tools

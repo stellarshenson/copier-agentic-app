@@ -2,6 +2,103 @@
 
 Entry point for executing the {{ project_name }} project. Consult `GOAL.md` for project objectives and deliverables.
 
+## Control Flow
+
+```mermaid
+flowchart TD
+    subgraph Commands
+        CMD["/process"]
+    end
+
+    subgraph Validation
+        PRE["preflight.md"]
+        PRE_RPT["PREFLIGHT-REPORT"]
+    end
+
+    subgraph "Project Manager"
+        PM["project-manager-agent"]
+        PM_RPT["PROJECT-ASSESSMENT.md"]
+    end
+
+    subgraph "Phase Execution"
+        P0["Phase 0: Preprocessing"]
+        P1["Phase 1: Analysis"]
+        P2["Phase 2: Framework"]
+        P3["Phase 3: Content Generation"]
+        P4["Phase 4: Verification"]
+        P5["Phase 5: Finalization"]
+    end
+
+    subgraph Artifacts
+        GOAL["GOAL.md"]
+        WF["workflow/workflow.md"]
+        AGENTS["agents/*.md"]
+        REFS["4-references/"]
+        INPUT["1-input/"]
+        WIP["2-work-in-progress/"]
+        OUTPUT["3-output/"]
+        CHECK["CHECKLIST.md"]
+    end
+
+    CMD --> PRE
+    PRE -->|"validates"| GOAL
+    PRE -->|"validates"| WF
+    PRE -->|"validates"| AGENTS
+    PRE --> PRE_RPT
+    PRE_RPT -->|"PASS"| PM
+    PRE_RPT -->|"FAIL"| ABORT["ABORT"]
+
+    PM -->|"reads"| GOAL
+    PM -->|"reads"| INPUT
+    PM -->|"reads"| AGENTS
+    PM -->|"reads"| WF
+    PM --> PM_RPT
+
+    PM_RPT --> P0
+    P0 -->|"prepares"| INPUT
+    P0 --> P1
+
+    P1 -->|"reads"| INPUT
+    P1 -->|"writes"| WIP
+    P1 -->|"user approval"| P2
+
+    P2 -->|"reads"| REFS
+    P2 -->|"writes"| CHECK
+    P2 --> P3
+
+    P3 -->|"parallel agents"| WIP
+    P3 -->|"updates"| CHECK
+    P3 --> P4
+
+    P4 -->|"verification-agent"| WIP
+    P4 -->|"reads"| INPUT
+    P4 -->|"reads"| REFS
+    P4 -->|"PASS"| P5
+    P4 -->|"FAIL"| P3
+
+    P5 -->|"moves verified"| OUTPUT
+    P5 --> DONE["COMPLETE"]
+
+    style CMD fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
+    style PRE fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style PM fill:#e9d5ff,stroke:#a855f7,stroke-width:2px
+    style P0 fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style P1 fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style P2 fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style P3 fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style P4 fill:#fee2e2,stroke:#ef4444,stroke-width:2px
+    style P5 fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style ABORT fill:#fee2e2,stroke:#ef4444,stroke-width:2px
+    style DONE fill:#d1fae5,stroke:#10b981,stroke-width:2px
+```
+
+**Legend**:
+- Blue: Entry point (command)
+- Amber: Validation (preflight)
+- Purple: Project Manager (assessment)
+- Green: Processing phases
+- Red: Verification / abort points
+
 ## Prerequisites
 
 Phase 0 must be completed before execution:
@@ -48,7 +145,19 @@ Consult `/workflow/workflow.md` for complete workflow definition and `/workflow/
 
 ## Invoking Execution
 
-To execute a specific phase:
+Use the `/process` command to execute the full workflow:
+
+```
+/process
+```
+
+This will:
+1. Run preflight validation (abort if fails)
+2. Execute reconnaissance agent
+3. Execute phases 0-5 in sequence
+4. Deliver verified outputs to `/3-output/`
+
+For manual phase execution:
 ```
 Execute Phase [N]: [Phase Name]
 ```
@@ -57,5 +166,3 @@ Example:
 ```
 Execute Phase 1: Preparation and Source Analysis
 ```
-
-For complete workflow, consult `/workflow/README.md` for execution approach (sequential vs parallel).
