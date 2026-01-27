@@ -7,10 +7,11 @@ All intermediate artifacts, drafts, and working documents are stored here during
 ## Contents
 
 During processing, this directory will contain:
-- Source summaries and analysis
+- Source summaries and analysis (`source-summaries.md`)
 - Output drafts and iterations
 - Reasoning documentation
-- CHECKLIST.md for status tracking
+- `CHECKLIST.md` for status tracking
+- `terminologia.md` for terminology standardization
 - Verification reports
 
 ## Organization

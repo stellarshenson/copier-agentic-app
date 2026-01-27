@@ -3,13 +3,8 @@ _subdirectory: template
 
 project_name:
   type: str
-  help: Project name (used in documentation and folder names)
+  help: Project name (used in documentation)
   default: my-agentic-project
-
-project_slug:
-  type: str
-  help: Project slug (lowercase, hyphens, used for directory names)
-  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
 
 project_description:
   type: str
@@ -40,11 +35,6 @@ max_parallel_agents:
   type: int
   help: Maximum number of agents running in parallel
   default: 3
-
-author_name:
-  type: str
-  help: Author name for documentation
-  default: ""
 
 _skip_if_exists:
   - ".claude/JOURNAL.md"

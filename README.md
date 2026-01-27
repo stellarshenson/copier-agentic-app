@@ -26,7 +26,6 @@ The template prompts for:
 | `output_type` | Type of output generated | structured reports |
 | `target_audience` | Target audience for outputs | stakeholders |
 | `max_parallel_agents` | Max concurrent agents | 3 |
-| `author_name` | Author name | (empty) |
 
 ## Generated Structure
 
