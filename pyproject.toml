@@ -1,0 +1,25 @@
+[project]
+name = "copier-agentic-app"
+version = "1.0.13"
+description = "Copier template for agentic workflow projects"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Konrad Jelen"}
+]
+keywords = ["copier", "template", "agentic", "workflow", "claude"]
+
+[project.urls]
+Homepage = "https://github.com/konradjelen/copier-agentic-app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = [
+    "template/**",
+    "copier.yaml",
+    "README.md",
+]

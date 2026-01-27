@@ -21,3 +21,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 6. **Task - Control flow diagram and refinements**: Added mermaid control flow diagram to INSTRUCTIONS.md and renamed reconnaissance agent to project manager<br>
    **Result**: Added mermaid flowchart to `INSTRUCTIONS.md.jinja` showing complete control flow from `/process` command through preflight validation, project manager assessment, phases 0-5, to completion with artifact references and abort conditions. Renamed `reconnaissance-agent.md.jinja` to `project-manager-agent.md.jinja` and updated all references (agents README, INSTRUCTIONS diagram, process command). Output artifact renamed from `RECONNAISSANCE-REPORT.md` to `PROJECT-ASSESSMENT.md`. Added Quick Start sections to both main `README.md` and template `README.md.jinja` with commands overview. Converted template variables from table to bullet points in main README. Committed as `cb36365`.
+
+7. **Task - Release v1.0.13**: Added project metadata and release command<br>
+   **Result**: Created `pyproject.toml` with version 1.0.12, project metadata (name, description, authors, keywords), and hatchling build configuration. Created `.claude/commands/release.md` for automated patch releases (increment version, commit, tag, push). Released as v1.0.13.
