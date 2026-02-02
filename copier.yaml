@@ -4,7 +4,7 @@ _subdirectory: template
 project_name:
   type: str
   help: Project name (used in documentation)
-  default: my-agentic-project
+  default: "{{ _copier_conf.dst_name }}"
 
 project_description:
   type: str

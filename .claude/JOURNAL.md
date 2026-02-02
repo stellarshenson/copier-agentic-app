@@ -24,3 +24,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 7. **Task - Release v1.0.13**: Added project metadata and release command<br>
    **Result**: Created `pyproject.toml` with version 1.0.12, project metadata (name, description, authors, keywords), and hatchling build configuration. Created `.claude/commands/release.md` for automated patch releases (increment version, commit, tag, push). Released as v1.0.13.
+
+8. **Task - Auto-populate project name**: Enhanced copier.yaml to use destination folder name as default<br>
+   **Result**: Changed `project_name` default from static "my-agentic-project" to `{{ _copier_conf.dst_name }}` which automatically uses the destination folder name when copying the template.
